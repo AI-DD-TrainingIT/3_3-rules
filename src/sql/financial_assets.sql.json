@@ -1,0 +1,38 @@
+{
+	"TABLE": "financial_assets",
+	"CREATE_TABLE": "CREATE TABLE financial_assets (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, type TEXT NOT NULL, value REAL NOT NULL, purchase_date DATETIME, user_id INTEGER, description TEXT, created_at DATETIME, updated_at DATETIME)",
+	"SELECT_ALL": "SELECT * FROM financial_assets",
+	"SELECT_BY_ID": "SELECT * FROM financial_assets WHERE id = $id",
+	"SELECT_BY_USER_ID": "SELECT * FROM financial_assets WHERE user_id = $userId",
+	"SELECT_BY_FIELD": "SELECT * FROM financial_assets WHERE $field = $value",
+	"SELECT_BY_QUERY": "SELECT * FROM financial_assets WHERE $query",
+	"INSERT": "INSERT INTO financial_assets (name, type, value, purchase_date, user_id, description, created_at, updated_at) VALUES ($name, $type, $value, $purchase_date, $user_id, $description, $created_at, $updated_at)",
+	"UPDATE": "UPDATE financial_assets SET name = $name, type = $type, value = $value, purchase_date = $purchase_date, description = $description, updated_at = $updated_at WHERE id = $id",
+	"DELETE": "DELETE FROM financial_assets WHERE id = $id",
+	"SEED": [
+		{
+			"name": "Company A Stock",
+			"type": "stock",
+			"value": 1000.0,
+			"purchase_date": "2023-01-15T00:00:00.000Z",
+			"user_id": 1,
+			"description": "100 shares of Company A"
+		},
+		{
+			"name": "Corporate Bond XYZ",
+			"type": "bond",
+			"value": 5000.0,
+			"purchase_date": "2022-11-30T00:00:00.000Z",
+			"user_id": 1,
+			"description": "5-year corporate bond with 3.5% yield"
+		},
+		{
+			"name": "Real Estate Fund",
+			"type": "fund",
+			"value": 10000.0,
+			"purchase_date": "2023-03-22T00:00:00.000Z",
+			"user_id": 2,
+			"description": "REIT fund focusing on commercial properties"
+		}
+	]
+}

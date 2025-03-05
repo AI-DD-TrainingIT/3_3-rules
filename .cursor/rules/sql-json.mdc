@@ -1,0 +1,61 @@
+---
+description: Rules for generating SQL JSON configuration files
+globs: "src/sql/*.sql.json"
+alwaysApply: false
+---
+
+# SQL JSON Configuration Files
+
+These files define SQL operations for a specific database table in a structured JSON format.
+
+## File Structure
+
+- Place files in the `src/sql/` directory
+- Name files according to the table name: `tablename.sql.json`
+- Use uppercase for SQL operation keys
+
+## Required Keys
+
+- `TABLE`: String with the table name
+- `CREATE_TABLE`: Full SQL statement for table creation with all columns and constraints
+- `SELECT_ALL`: Query to fetch all records
+- `SELECT_BY_ID`: Query to fetch a record by its primary key
+- `INSERT`: Statement to insert a new record with all fields
+- `UPDATE`: Statement to update all fields for a record
+- `DELETE`: Statement to delete a record by its primary key
+
+## Parameter Conventions
+
+- Use `$paramName` syntax for query parameters
+- Common parameters:
+  - `$id`: For primary key references
+  - `$created_at` and `$updated_at`: For timestamp fields
+  - Other parameters should match column names
+
+## SEED Data (Optional)
+
+- Include a `SEED` array if the table needs initial data
+- Each seed item should be an object with the table's column values
+- Omit auto-generated fields (id, timestamps) from seed objects
+
+## Example
+
+```json
+{
+  "TABLE": "tablename",
+  "CREATE_TABLE": "CREATE TABLE tablename (id INTEGER PRIMARY KEY AUTOINCREMENT, field1 TEXT, created_at DATETIME, updated_at DATETIME)",
+  "SELECT_ALL": "SELECT * FROM tablename",
+  "SELECT_BY_ID": "SELECT * FROM tablename WHERE id = $id",
+  "INSERT": "INSERT INTO tablename (field1, created_at, updated_at) VALUES ($field1, $created_at, $updated_at)",
+  "UPDATE": "UPDATE tablename SET field1 = $field1, updated_at = $updated_at WHERE id = $id",
+  "DELETE": "DELETE FROM tablename WHERE id = $id",
+  "SEED": [
+    {
+      "field1": "Initial value 1"
+    },
+    {
+      "field1": "Initial value 2"
+    }
+  ]
+}
+``` 

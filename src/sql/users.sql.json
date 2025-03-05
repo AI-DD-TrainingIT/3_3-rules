@@ -1,0 +1,22 @@
+{
+	"TABLE": "users",
+	"CREATE_TABLE": "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE, password TEXT, created_at DATETIME, updated_at DATETIME)",
+	"SELECT_ALL": "SELECT * FROM users",
+	"SELECT_BY_ID": "SELECT * FROM users WHERE id = $id",
+	"SELECT_BY_FIELD": "SELECT * FROM users WHERE $field = $value",
+	"SELECT_BY_QUERY": "SELECT * FROM users WHERE $query",
+	"SELECT_BY_EMAIL": "SELECT * FROM users WHERE email = $email",
+	"INSERT": "INSERT INTO users (email, password, created_at, updated_at) VALUES ($email, $password, $created_at, $updated_at)",
+	"UPDATE": "UPDATE users SET email = $email, password = $password, updated_at = $updated_at WHERE id = $id",
+	"DELETE": "DELETE FROM users WHERE id = $id",
+	"SEED": [
+		{
+			"email": "admin@example.com",
+			"password": "$2b$10$rA1kYk.qkAu.Yh/9A2pguu5EwzRRzh1e9TQ4AvHVrFIGCbznuoTKG"
+		},
+		{
+			"email": "user@example.com",
+			"password": "$2b$10$sBY0M9bZ27Z8ujB3fvgQeezkF0/TqBFQOTDqigG2xdFTWvjLO7d96"
+		}
+	]
+}
